@@ -24,19 +24,19 @@ const options = [
     value: "red",
   },
   {
-    title: "The color Green",
-    content: "green",
+    label: "The color Green",
+    value: "green",
   },
   {
-    title: "A shade of blue",
-    content: "blue",
+    label: "A shade of blue",
+    value: "blue",
   },
 ];
 
 export default () => {
   return (
     <div>
-      <Dropdown options={options}/>
+      <Dropdown options={options} />
     </div>
   );
 };
