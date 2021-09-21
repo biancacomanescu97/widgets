@@ -56,6 +56,7 @@ export default () => {
 //       </button>
 //       {showDropdown ? (
 //         <Dropdown
+//           label="Select a Color"
 //           selected={selected}
 //           onSelectedChange={setSelected}
 //           options={options}
