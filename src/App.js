@@ -3,6 +3,7 @@ import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
+import Route from "./components/Route";
 
 const items = [
   {
@@ -31,26 +32,24 @@ const showList = () => {
   }
 };
 
-// const options = [
-//   {
-//     label: "The color Red",
-//     value: "red",
-//   },
-//   {
-//     label: "The color Green",
-//     value: "green",
-//   },
-//   {
-//     label: "A shade of blue",
-//     value: "blue",
-//   },
-// ];
-
-// const [selected, setSelected] = useState(options[0]);
+const options = [
+  {
+    label: "The color Red",
+    value: "red",
+  },
+  {
+    label: "The color Green",
+    value: "green",
+  },
+  {
+    label: "A shade of blue",
+    value: "blue",
+  },
+];
 
 const showDropdown = () => {
   if (window.location.pathname === "/dropdown") {
-    return <Dropdown />
+    return <Dropdown />;
     // return (
     //   <Dropdown
     //     label="Select a Color"
@@ -69,50 +68,27 @@ const showTranslate = () => {
 };
 
 export default () => {
+  const [selected, setSelected] = useState(options[0]);
+
   return (
     <div>
-      {showAccordion()}
-      {showList()}
-      {showDropdown()}
-      {showTranslate()}
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <Dropdown
+          label="Select a Color"
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+        />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 };
-
-//Dropdown elements
-
-// const options = [
-//   {
-//     label: "The color Red",
-//     value: "red",
-//   },
-//   {
-//     label: "The color Green",
-//     value: "green",
-//   },
-//   {
-//     label: "A shade of blue",
-//     value: "blue",
-//   },
-// ];
-
-// export default () => {
-//   const [selected, setSelected] = useState(options[0]);
-//   const [showDropdown, setShowDropdown] = useState(true);
-
-//   return (
-//     <div>
-//       <button onClick={() => setShowDropdown(!showDropdown)}>
-//         Toggle Dropdown
-//       </button>
-//       {showDropdown ? (
-//         <Dropdown
-//           label="Select a Color"
-//           selected={selected}
-//           onSelectedChange={setSelected}
-//           options={options}
-//         />
-//       ) : null}
-//     </div>
-//   );
-// };
