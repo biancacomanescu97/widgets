@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { result } from "lodash";
 
 const Search = () => {
   const [term, setTerm] = useState("programming");
@@ -14,9 +13,8 @@ const Search = () => {
 
     return () => {
       clearTimeout(timerId);
-    };   
+    };
   }, [term]);
-
 
   useEffect(() => {
     const search = async () => {
